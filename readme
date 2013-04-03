@@ -1,1 +1,4 @@
-This is my first game.
+I am having a problem with the camera.  
+I got it to show one map and then switch when the player reaches an edge.
+The problem is that nothing shows once the camera switches.
+I threw in a print out of the coordinates that the camera moves to, but they are correct.
