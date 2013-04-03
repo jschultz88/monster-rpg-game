@@ -2,6 +2,7 @@
 #include "App.h"
 using namespace std;
 //==============================================================================
+//sets default variables
 App::App() {
     Surf_Display = NULL;
 
@@ -9,30 +10,32 @@ App::App() {
 }
 
 //------------------------------------------------------------------------------
+//controls execution of the program
 int App::OnExecute() {
-    if(OnInit() == false) {
-        return -1;
+    if(OnInit() == false) {  //kicks it back if program hasn't initialized yet
+        return -1;				//sends error
     }
 
-    SDL_Event Event;
+    SDL_Event Event;		//creates an SDL Event
 
-    while(Running) {
-        while(SDL_PollEvent(&Event)) {
-            OnEvent(&Event);
+    while(Running) {					//checks that program is running
+        while(SDL_PollEvent(&Event)) {  //watches for user input
+            OnEvent(&Event);			//runs OnEvent for users input
         }
 
-        OnLoop();
-        OnRender();
+        OnLoop();						//runs OnLoop
+        OnRender();						//renders graphics
     }
 
-    OnCleanup();
+    OnCleanup();						//Cleans up
 
-    return 0;
+    return 0;							//no error
 }
 
 //==============================================================================
+//main function runs OnExecute
 int main(int argc, char* argv[]) {
-    App theApp;
+    App theApp;						
 
     return theApp.OnExecute();
 }

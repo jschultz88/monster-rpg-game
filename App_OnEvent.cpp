@@ -1,13 +1,14 @@
 //==============================================================================
 #include "App.h"
 
-//==============================================================================
+//------------------------------------------------------------------------------
 void App::OnEvent(SDL_Event* Event) {
     Event::OnEvent(Event);
 }
 
-//==============================================================================
-void App::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
+//------------------------------------------------------------------------------
+//controls what happens when keys are pressed down
+void App::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {  
 	switch(sym) {
 		case SDLK_LEFT: {
 			Player1.MoveLeft = true;
@@ -40,7 +41,8 @@ void App::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {
 }
 
 //------------------------------------------------------------------------------
-void App::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode) {
+//controls what happens when keys are released
+void App::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode) { 
 	switch(sym) {
 		case SDLK_LEFT: {
 			Player1.MoveLeft = false;
@@ -68,6 +70,7 @@ void App::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode) {
 }
 
 //------------------------------------------------------------------------------
+//ends program
 void App::OnExit() {
 	Running = false;
 }

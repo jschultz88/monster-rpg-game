@@ -11,8 +11,6 @@ void App::OnRender() {
 
 	SDL_FillRect(Surf_Display, &Rect, 0);
 	
-	App::Player1 = Entity::EntityList.front;
-	
 	Area::AreaControl.OnRender(Surf_Display, -Camera::CameraControl.GetX(), -Camera::CameraControl.GetY(), Player1.GetX(), Player1.GetY());
 
     //--------------------------------------------------------------------------

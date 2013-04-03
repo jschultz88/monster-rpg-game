@@ -14,16 +14,20 @@ Area::Area() {
 
 //=============================================================================
 bool Area::OnLoad(char* File) {
+    //clears area resources
     OnCleanup();
-
+	
+	//opens File
     FILE* FileHandle = fopen(File, "r");
 
+    //kicks back if file is empty
     if(FileHandle == NULL) {
         return false;
     }
 
     char TilesetFile[255];
 
+    //reads .maps file
     fscanf(FileHandle, "%s\n", TilesetFile);
 
     if((Surf_Tileset = Surface::OnLoad(TilesetFile)) == false) {
@@ -31,13 +35,15 @@ bool Area::OnLoad(char* File) {
 
         return false;
     }
-
+	
+	//reads area size from .area
     fscanf(FileHandle, "%d\n", &AreaSize);
-
+	
+	//runs through each tile in the area
     for(int X = 0;X < AreaSize;X++) {
         for(int Y = 0;Y < AreaSize;Y++) {
             char MapFile[255];
-
+			
             fscanf(FileHandle, "%s ", MapFile);
 
             Map tempMap;

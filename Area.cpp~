@@ -14,16 +14,20 @@ Area::Area() {
 
 //=============================================================================
 bool Area::OnLoad(char* File) {
+    //clears area resources
     OnCleanup();
-
+	
+	//opens File
     FILE* FileHandle = fopen(File, "r");
 
+    //kicks back if file is empty
     if(FileHandle == NULL) {
         return false;
     }
 
     char TilesetFile[255];
 
+    //reads .maps file
     fscanf(FileHandle, "%s\n", TilesetFile);
 
     if((Surf_Tileset = Surface::OnLoad(TilesetFile)) == false) {
@@ -31,7 +35,8 @@ bool Area::OnLoad(char* File) {
 
         return false;
     }
-
+	
+	//reads area size from .area
     fscanf(FileHandle, "%d\n", &AreaSize);
 
     for(int X = 0;X < AreaSize;X++) {
@@ -93,8 +98,8 @@ void Area::OnRender(SDL_Surface* Surf_Display, int CameraX, int CameraY, int Pla
 		
 		//if(ID < 0 || ID >= MapList.size()) continue;
 		
-		int X = ((ID) * MapWidth) + CameraX;
-		int Y = ((ID) * MapHeight) + CameraY;
+		int X = ((ID % AreaSize) * MapWidth) + CameraX;
+		int Y = ((ID / AreaSize) * MapHeight) + CameraY;
 		
 		cout << ID << "\n";
 		cout << X << "\n";
