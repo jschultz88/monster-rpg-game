@@ -1,0 +1,28 @@
+# Automatically generated Makefile for project: sdl_maps
+# Created on  by gaten for sdltutorials.com
+# Comments, suggestions and bugs email: gaten DOT net AT gmail DOT com
+
+# this is modified makefile from 7th tutorial
+# 2009-06-07 haqu
+cd 
+# Compiler
+CC=g++
+
+# Objects
+OBJECTS=Animation.o App.o App_OnCleanup.o App_OnEvent.o App_OnInit.o App_OnLoop.o App_OnRender.o Area.o Camera.o Entity.o Event.o FPS.o Map.o Player.o Surface.o Tile.o
+
+# Compiler flags
+CPPFLAGS=-Wall -g `sdl-config --cflags`
+
+# Linker flags
+LDFLAGS=`sdl-config --libs` -lSDL -lSDL_image
+
+main: App.cpp
+	$(CC) $(CPPFLAGS) -c Animation.cpp App.cpp App_OnCleanup.cpp App_OnEvent.cpp App_OnInit.cpp App_OnLoop.cpp App_OnRender.cpp Area.cpp Camera.cpp Entity.cpp Event.cpp FPS.cpp Map.cpp Player.cpp Surface.cpp Tile.cpp
+	$(CC) $(OBJECTS) $(CPPFLAGS) $(LDFLAGS) -o game
+
+# cleanup
+clean:
+	rm -rf $(OBJECTS)
+
+# EOF

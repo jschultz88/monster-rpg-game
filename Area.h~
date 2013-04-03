@@ -1,0 +1,44 @@
+//=============================================================================
+#ifndef _AREA_H_
+    #define _AREA_H_
+
+
+#include "Map.h"
+#include <stdio.h>
+
+
+//=============================================================================
+class Area {
+    public:
+        static Area            AreaControl;
+        
+
+    public:
+        std::vector<Map>        MapList;
+        
+        int						ID;
+
+    private:
+        int                     AreaSize;
+
+        SDL_Surface*			Surf_Tileset;
+
+    public:
+        Area();
+
+        bool    OnLoad(char* File);
+
+        void    OnRender(SDL_Surface* Surf_Display, int CameraX, int CameraY, int PlayerX, int PlayerY);
+
+        void    OnCleanup();
+
+    public:
+        Map*	GetMap(int X, int Y);
+
+		Tile*	GetTile(int X, int Y);
+};
+
+//=============================================================================
+
+#endif
+
