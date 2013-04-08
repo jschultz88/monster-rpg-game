@@ -14,6 +14,9 @@ void App::OnRender() {
 	
 	//displays the proper map
 	Area::AreaControl.OnRender(Surf_Display, -Camera::CameraControl.GetX(), -Camera::CameraControl.GetY(), Player1.GetX(), Player1.GetY());
+	
+	
+
 
     //--------------------------------------------------------------------------
     // Entities - displays all of the entities

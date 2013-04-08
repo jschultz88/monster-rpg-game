@@ -2,7 +2,7 @@
 #include "Entity.h"
 
 //==============================================================================
-std::vector<Entity> 	Entity::EntityList;
+std::vector<Entity*> 	Entity::EntityList;
 
 std::vector<EntityCol> EntityCol::EntityColList;
 
@@ -114,7 +114,7 @@ void Entity::OnLoop() {
 void Entity::OnRender(SDL_Surface* Surf_Display) {
     if(Surf_Entity == NULL || Surf_Display == NULL) return;
 
-    Surface::OnDraw(Surf_Display, Surf_Entity, X - Camera::CameraControl.GetX(), Y - Camera::CameraControl.GetY(), CurrentFrameCol * Width, (CurrentFrameRow + Anim_Control.GetCurrentFrame()) * Height, Width, Height);
+    Surface::OnDraw(Surf_Display, Surf_Entity, X /*- Camera::CameraControl.GetX()*/, Y /*- Camera::CameraControl.GetY()*/, CurrentFrameCol * Width, (CurrentFrameRow + Anim_Control.GetCurrentFrame()) * Height, Width, Height);
 }
 
 //------------------------------------------------------------------------------

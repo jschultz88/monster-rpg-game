@@ -1,13 +1,13 @@
 //=============================================================================
 #include "Area.h"
-#include <iostream>
-using namespace std;
+
 //=============================================================================
 Area Area::AreaControl;
 
 //=============================================================================
 Area::Area() {
     AreaSize = 0;
+    
     
     
 }
@@ -71,23 +71,22 @@ void Area::OnRender(SDL_Surface* Surf_Display, int CameraX, int CameraY, int Pla
 	int MapWidth  = MAP_WIDTH * TILE_SIZE;
 	int MapHeight = MAP_HEIGHT * TILE_SIZE;
 	
-	
 	int FirstID = -CameraX / MapWidth;
 		FirstID = FirstID + ((-CameraY / MapHeight) * AreaSize);
 	
-	if (PlayerX>CameraX+WWIDTH)
+	if (PlayerX>-CameraX+WWIDTH)
 		{
 			ID=FirstID + 1;
 		}else
-	if (PlayerX<CameraX)
+	if (PlayerX<-CameraX)
 		{
 			ID=FirstID - 1;
 		}else
-	if (PlayerY>CameraY+WHEIGHT)
+	if (PlayerY>-CameraY+WHEIGHT)
 		{
 			ID=FirstID + AreaSize;
 		}else
-	if (PlayerY<CameraY)
+	if (PlayerY<-CameraY)
 		{
 			ID=FirstID - AreaSize;
 		}else{
@@ -99,14 +98,15 @@ void Area::OnRender(SDL_Surface* Surf_Display, int CameraX, int CameraY, int Pla
 		
 		//if(ID < 0 || ID >= MapList.size()) continue;
 		
+		
 		int X = ((ID % AreaSize) * MapWidth) + CameraX;
 		int Y = ((ID / AreaSize) * MapHeight) + CameraY;
 		
-		cout << ID << "\n";
-		cout << X << "\n";
-		cout << Y << "\n";
 		
 		MapList[ID].OnRender(Surf_Display, X, Y);
+		
+		Camera::CameraControl.SetPos(X, Y);
+		
 	//}
 }
 

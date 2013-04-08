@@ -4,6 +4,7 @@
 
 
 #include "Map.h"
+#include "Camera.h"
 
 
 
@@ -11,6 +12,8 @@
 class Area {
     public:
         static Area            AreaControl;
+        
+       
         
 
     public:
@@ -36,6 +39,8 @@ class Area {
         Map*	GetMap(int X, int Y);
 
 		Tile*	GetTile(int X, int Y);
+		
+		
 };
 
 //=============================================================================

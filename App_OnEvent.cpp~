@@ -7,25 +7,38 @@ void App::OnEvent(SDL_Event* Event) {
 }
 
 //------------------------------------------------------------------------------
-void App::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {  //controls what happens when keys are pressed down
+//controls what happens when keys are pressed down
+void App::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {  
 	switch(sym) {
 		case SDLK_LEFT: {
 			Player1.MoveLeft = true;
+			Player1.MoveRight = false;
+			Player1.MoveDown = false;
+			Player1.MoveUp = false;
 			break;
 		}
 
 		case SDLK_RIGHT: {
 			Player1.MoveRight = true;
+			Player1.MoveLeft = false;
+			Player1.MoveUp = false;
+			Player1.MoveDown = false;
 			break;
 		}
 		
 		case SDLK_UP: {
 			Player1.MoveUp = true;
+			Player1.MoveDown = false;
+			Player1.MoveLeft = false;
+			Player1.MoveRight = false;
 			break;
 		}
 
 		case SDLK_DOWN: {
 			Player1.MoveDown = true;
+			Player1.MoveUp = false;
+			Player1.MoveLeft = false;
+			Player1.MoveRight = false;
 			break;
 		}
 
@@ -40,7 +53,8 @@ void App::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode) {  //controls what h
 }
 
 //------------------------------------------------------------------------------
-void App::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode) { //contro
+//controls what happens when keys are released
+void App::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode) { 
 	switch(sym) {
 		case SDLK_LEFT: {
 			Player1.MoveLeft = false;
@@ -68,6 +82,7 @@ void App::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode) { //contro
 }
 
 //------------------------------------------------------------------------------
+//ends program
 void App::OnExit() {
 	Running = false;
 }

@@ -1,6 +1,8 @@
 //=============================================================================
 #include "Map.h"
 
+
+
 //=============================================================================
 Map::Map() {
 	Surf_Tileset = NULL;
@@ -35,6 +37,7 @@ bool Map::OnLoad(char* File) {
 //-----------------------------------------------------------------------------
 void Map::OnRender(SDL_Surface* Surf_Display, int MapX, int MapY) {
 	if(Surf_Tileset == NULL) return;
+	
 
 	int TilesetWidth  = Surf_Tileset->w / TILE_SIZE;
 	int TilesetHeight = Surf_Tileset->h / TILE_SIZE;

@@ -25,10 +25,12 @@ bool App::OnInit() {
     if(Player1.OnLoad((char*)"images/yoshi.png", 64, 64, 8) == false) {
     	return false;
     }
-
+	
+	Player1.X = 20;
+	Player1.Y = 20;
 	//enables push_back so that entities don't overlap
     Entity::EntityList.push_back(&Player1);
-
+	//Camera::CameraControl.SetPos(640,480);
 	//sets camera over player1
 	//Camera::CameraControl.TargetMode = TARGET_MODE_CENTER;
     //Camera::CameraControl.SetPos(AreaControl.GetMap.X, AreaControl.GetMap.Y);
